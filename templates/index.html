@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CallGenius - Assistant Vocal Démo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Police Google premium -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="glass-panel">
+        <header>
+            <div class="badge">PROTOTYPE IA</div>
+            <h1>CallGenius</h1>
+            <p>Le standard téléphonique qui ne dort jamais.</p>
+        </header>
+        
+        <main>
+            <!-- Vue 1: Configuration (Onboarding) -->
+            <div id="setup-view" class="view-active">
+                <h2 class="section-title">Configurez le Secrétariat IA</h2>
+                <form id="setup-form">
+                    <div class="form-group">
+                        <label>Type d'activité</label>
+                        <select id="activity-select" name="activity" required>
+                            <option value="Hôtel / Hébergement" selected>Hôtel / Hébergement</option>
+                            <option value="Plombier">Plombier</option>
+                            <option value="Peintre / Bâtiment">Peintre / Bâtiment</option>
+                            <option value="Cabinet Dentaire">Cabinet Dentaire</option>
+                            <option value="Autre">Autre</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Nom de l'entreprise</label>
+                        <input type="text" name="name" value="Hôtel Madayann" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Horaires d'ouverture</label>
+                        <input type="text" name="hours" value="24h/24 et 7j/7" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Ton de l'assistant</label>
+                        <select name="tone" required>
+                            <option value="Professionnel et courtois">Professionnel et courtois</option>
+                            <option value="Chaleureux et détendu">Chaleureux et détendu</option>
+                            <option value="Dynamique et direct">Dynamique et direct</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Détails supplémentaires (Services, Tarifs...)</label>
+                        <textarea name="details" rows="8">Service de restauration sur réservations
+Type de chambre : 
+- Chambre double 20 000 F CFA
+- Chambre simple 15 000 F CFA
+- Suite spacieuse 35 000 F CFA
+
+Petit déjeuner: 5000 F CFA
+Déjeuné: 12000 F CFA
+Diné: 12000 F CFA
+
+Equipement : salle de réunion + parking + wifi gratuit
+Service de buanderie (lavage et repassage) 3000 F CFA
+Adresse: 3 ième entré Ndamba</textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Voix de l'Assistant(e)</label>
+                        <select id="voice-select" name="voice">
+                            <option value="">Chargement des voix disponibles...</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Document de connaissance (Optionnel)</label>
+                        <input type="file" name="document" accept=".pdf" class="file-input">
+                        <small class="help-text">Brochure tarifaire ou PDF pour nourrir l'IA.</small>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary" id="btn-create">
+                        <span class="icon">✨</span> Générer l'Assistant
+                    </button>
+                </form>
+            </div>
+
+            <!-- Vue 2: Test de l'Orbe (IA Vocale) -->
+            <div id="orb-view" class="view-hidden">
+                <div class="orb-wrapper">
+                    <div id="orb" class="orb idle">
+                        <div class="glow"></div>
+                    </div>
+                </div>
+                
+                <div class="controls">
+                    <p id="status-text">L'assistante Sophie est prête.</p>
+                    <button id="call-btn" class="btn-primary">
+                        <span class="icon">📞</span> Tester l'Appel
+                    </button>
+                    <button id="btn-back" class="btn-text">← Modifier la configuration</button>
+                </div>
+                
+                <div class="conversation-log" id="log">
+                    <div class="log-placeholder">L'historique s'affichera ici...</div>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>Démo : Hôtel Madayann</p>
+        </footer>
+    </div>
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
