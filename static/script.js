@@ -247,7 +247,7 @@ function startCall() {
     callBtn.innerHTML = '<span class="icon">⏹</span> Raccrocher';
     callBtn.classList.add('active');
     
-    const welcomeText = "Bonjour, vous êtes bien sur la ligne de l'Hôtel Madayann. Je suis Sophie. Comment puis-je vous aider aujourd'hui ?";
+    const welcomeText = "Bonjour, vous êtes bien l'Hôtel Madayann. Que puis-je faire pour vous ?";
     addMessage('ai', welcomeText);
     speak(welcomeText);
 }
